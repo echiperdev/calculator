@@ -32,7 +32,7 @@ Calculator.prototype.clear = function() {
 /* @Object Prototype
 /* Handles functionality of the 'Delete' (i.e. DEL) button */
 Calculator.prototype.delete = function() {
-    // Some code;
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
 }
 
 // APPEND
@@ -135,4 +135,10 @@ equalsButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     calculator.clear();
     calculator.update();
-})
+});
+
+// Add event listener to DELETE button
+deleteButton.addEventListener('click', () => {
+    calculator.delete();
+    calculator.update();
+});
