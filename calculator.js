@@ -18,3 +18,45 @@ function Calculator(previousOperandElement, currentOperandElement) {
     this.currentOperand = '';
     this.operations = undefined;
 }
+
+// CLEAR
+/* @Object Prototype
+/* Handles functionality of the 'All Clear' (i.e. AC) button */
+Calculator.prototype.clear = function() {
+    // Some code;
+}
+
+// DELETE
+/* @Object Prototype
+/* Handles functionality of the 'Delete' (i.e. DEL) button */
+Calculator.prototype.delete = function() {
+    // Some code;
+}
+
+// APPEND
+/* @Object Prototype
+/* Handles functionality of the 'Operand' (i.e. number) buttons */
+Calculator.prototype.append = function(number) {
+    // Some code;
+}
+
+// OPERATE
+/* @Object prototype
+/* Handles functionality of the 'operator' buttons */
+Calculator.prototype.operate = function(operation) {
+    // Some code;
+}
+
+// COMPUTE
+/* @Object prototype
+/* Computes single value to be display */
+Calculator.prototype.compute = function() {
+    // Some code;
+}
+
+// ** UPDATE
+/* @Object prototype
+/* Displays alpha(previous calculation) and omega (latest calculation) results */
+Calculator.prototype.update = function() {
+    // Some code
+}
