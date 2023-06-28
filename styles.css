@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,500;1,400&display=swap');
+
+* , *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #F7ED6B;
+    background: linear-gradient(315deg, #F7ED6B, #C64C59);
+}
+
+.calculator {
+    min-height: 95vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 5rem);
+    grid-template-rows: minmax(7.2rem, auto) repeat(5, 5rem);
+    gap: .5rem;
+}
+
+button {
+    border: none;
+    outline: none;
+    border-radius: 35px;
+    background-color: rgba(255, 255, 255, .45);
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+button:hover {
+    transition-duration: 100ms;
+    color: rgb(255, 230, 0);
+}
+
+.operand:hover {
+    background-color: rgba(235, 117, 70, 0.6);
+}
+
+.wide, .operator, #delete, #clear {
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.operator:hover {
+    background-color: rgba(96, 219, 84, 0.6);
+}
+
+#equals:hover {
+    background-color: rgba(66, 82, 219, 0.6);
+}
+
+#clear:hover, #delete:hover {
+    background-color: rgba(19, 128, 218, 0.6);
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.display {
+    border-radius: 35px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    word-wrap: break-word;
+    word-break: break-all;
+    background-color: rgba(0, 0, 0, .45);
+}
+
+#previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+#current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.footer {
+    min-height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 1rem;
+    color: rgba(134, 60, 11, 0.5);
+}
+
+@media screen and (max-width: 540px) {
+    .calculator {
+        grid-template-columns: repeat(4, 4rem);
+        grid-template-rows: minmax(5rem, auto) repeat(5, 4rem);
+        gap: .5rem;
+    }
+
+    button {
+        font-size: 1.5rem;
+    }
+}
