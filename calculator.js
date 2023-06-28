@@ -47,7 +47,15 @@ Calculator.prototype.append = function(number) {
 /* @Object prototype
 /* Handles functionality of the 'operator' buttons */
 Calculator.prototype.operate = function(operation) {
-    // Some code;
+    if (this.currentOperand === '') {
+        return;
+    }
+    if (this.previousOperand !== '') {
+        this.compute();
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = '';
 }
 
 // COMPUTE
@@ -62,6 +70,7 @@ Calculator.prototype.compute = function() {
 /* Displays alpha(previous calculation) and omega (latest calculation) results */
 Calculator.prototype.update = function() {
     this.currentOperandElement.innerText = this.currentOperand;
+    this.previousOperandElement.innerText = this.previousOperand;
 }
 
 // Create new instance of CALCULATOR object
@@ -71,6 +80,14 @@ const calculator = new Calculator(previousOperandElement, currentOperandElement)
 operands.forEach(operand => {
     operand.addEventListener('click', () => {
         calculator.append(operand.innerText);
+        calculator.update();
+    })
+})
+
+// Add event listeners to OPERATORS buttons
+operators.forEach(operator => {
+    operator.addEventListener('click', () => {
+        calculator.operate(operator.innerText);
         calculator.update();
     })
 })
