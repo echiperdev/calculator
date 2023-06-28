@@ -23,7 +23,9 @@ function Calculator(previousOperandElement, currentOperandElement) {
 /* @Object Prototype
 /* Handles functionality of the 'All Clear' (i.e. AC) button */
 Calculator.prototype.clear = function() {
-    // Some code;
+    this.previousOperand = '';
+    this.currentOperand = '';
+    this.operation = undefined;
 }
 
 // DELETE
@@ -128,3 +130,9 @@ equalsButton.addEventListener('click', () => {
     calculator.compute();
     calculator.update();
 });
+
+// Add event listener to ALL CLEAR button
+clearButton.addEventListener('click', () => {
+    calculator.clear();
+    calculator.update();
+})
