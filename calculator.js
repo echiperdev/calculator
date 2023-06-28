@@ -70,6 +70,9 @@ Calculator.prototype.compute = function() {
     }
     if (crnt === 0 && this.operation == '÷') {
         alert('Yes. But why?');
+        this.currentOperand = '';
+        this.previousOperand = '';
+        operation = undefined;
         return;      
     }
     switch (this.operation) {
