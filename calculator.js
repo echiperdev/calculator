@@ -37,7 +37,7 @@ Calculator.prototype.delete = function() {
 /* @Object Prototype
 /* Handles functionality of the 'Operand' (i.e. number) buttons */
 Calculator.prototype.append = function(number) {
-    // Some code;
+    this.currentOperand = this.currentOperand.toString() + number.toString();
 }
 
 // OPERATE
@@ -58,8 +58,16 @@ Calculator.prototype.compute = function() {
 /* @Object prototype
 /* Displays alpha(previous calculation) and omega (latest calculation) results */
 Calculator.prototype.update = function() {
-    // Some code
+    this.currentOperandElement.innerText = this.currentOperand;
 }
 
 // Create new instance of CALCULATOR object
 const calculator = new Calculator(previousOperandElement, currentOperandElement);
+
+// Add event listeners to OPERANDS buttons
+operands.forEach(operand => {
+    operand.addEventListener('click', () => {
+        calculator.append(operand.innerText);
+        calculator.update();
+    })
+})
