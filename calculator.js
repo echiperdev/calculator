@@ -4,7 +4,7 @@ const operands = Array.prototype.slice.call(document.querySelectorAll('.operand'
 const operators = Array.prototype.slice.call(document.querySelectorAll('.operator'));
 const clearButton = document.getElementById('clear');
 const deleteButton = document.getElementById('delete');
-const equalsButton = document.getElementById('.equals');
+const equalsButton = document.getElementById('equals');
 const previousOperandElement = document.getElementById('previous-operand');
 const currentOperandElement = document.getElementById('current-operand');
 
@@ -62,7 +62,35 @@ Calculator.prototype.operate = function(operation) {
 /* @Object prototype
 /* Computes single value to be display */
 Calculator.prototype.compute = function() {
-    // Some code;
+    let computation;
+    const prev = parseFloat(this.previousOperand);
+    const crnt = parseFloat(this.currentOperand);
+    if (isNaN(prev) || isNaN(crnt)) {
+        return;
+    }
+    if (crnt === 0 && this.operation == '÷') {
+        alert('Yes. But why?');
+        return;      
+    }
+    switch (this.operation) {
+        case '+':
+            computation = prev + crnt;
+            break;
+        case '-':
+            computation = prev - crnt;
+            break;
+        case '*':
+            computation = crnt * crnt;
+            break;
+        case '÷':
+            computation = prev / crnt;
+            break;
+        default:
+            return;
+    }
+    this.currentOperand = computation;
+    this.operation = undefined;
+    this.previousOperand = '';
 }
 
 // ** UPDATE
@@ -82,7 +110,7 @@ operands.forEach(operand => {
         calculator.append(operand.innerText);
         calculator.update();
     })
-})
+});
 
 // Add event listeners to OPERATORS buttons
 operators.forEach(operator => {
@@ -90,4 +118,10 @@ operators.forEach(operator => {
         calculator.operate(operator.innerText);
         calculator.update();
     })
-})
+});
+
+// Add event listener to EQUALS button
+equalsButton.addEventListener('click', () => {
+    calculator.compute();
+    calculator.update();
+});
