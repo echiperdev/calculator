@@ -60,3 +60,6 @@ Calculator.prototype.compute = function() {
 Calculator.prototype.update = function() {
     // Some code
 }
+
+// Create new instance of CALCULATOR object
+const calculator = new Calculator(previousOperandElement, currentOperandElement);
