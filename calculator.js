@@ -37,6 +37,9 @@ Calculator.prototype.delete = function() {
 /* @Object Prototype
 /* Handles functionality of the 'Operand' (i.e. number) buttons */
 Calculator.prototype.append = function(number) {
+    if (number === '.' && this.currentOperand.includes('.')) { // Set fractioning model
+        return;
+    }
     this.currentOperand = this.currentOperand.toString() + number.toString();
 }
 
