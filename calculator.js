@@ -93,10 +93,18 @@ Calculator.prototype.compute = function() {
         default:
             return;
     }
-    this.currentOperand = computation;
+    this.currentOperand = this.round(computation);
     this.operation = undefined;
     this.previousOperand = '';
 }
+
+// ROUND
+/* @Object prototype
+/* Rounds decimals */
+Calculator.prototype.round = function(number) {
+    return Math.round(number * 1000) / 1000;
+}
+
 
 // ** SEPARATE
 /* @Object prototype
