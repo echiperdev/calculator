@@ -98,12 +98,36 @@ Calculator.prototype.compute = function() {
     this.previousOperand = '';
 }
 
+// ** SEPARATE
+/* @Object prototype
+/* Splices numbers every 3 digits */
+Calculator.prototype.separate = function(number) {
+    const stringNumber = number.toString();
+    const integerDigits = parseFloat(stringNumber.split('.')[0]);
+    const decimalDigits = stringNumber.split('.')[1];
+    let integerDisplay;
+    if (isNaN(integerDigits)) {
+        integerDisplay = '';
+    } else {
+        integerDisplay = integerDigits.toLocaleString('en', {maximumFractionDigits: 0});
+    }
+    if (decimalDigits != null) {
+        return `${integerDisplay}.${decimalDigits}`;
+    } else {
+        return integerDisplay; 
+    }
+}
+
 // ** UPDATE
 /* @Object prototype
 /* Displays alpha(previous calculation) and omega (latest calculation) results */
 Calculator.prototype.update = function() {
-    this.currentOperandElement.innerText = this.currentOperand;
-    this.previousOperandElement.innerText = this.previousOperand;
+    this.currentOperandElement.innerText = this.separate(this.currentOperand);
+    if (this.operation != null) {
+        this.previousOperandElement.innerText = `${this.separate(this.previousOperand)} ${this.operation}`;
+    } else {
+        this.previousOperandElement.innerText = '';
+    }
 }
 
 // Create new instance of CALCULATOR object
