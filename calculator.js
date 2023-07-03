@@ -85,7 +85,7 @@ Calculator.prototype.compute = function() {
             computation = prev - crnt;
             break;
         case '*':
-            computation = crnt * crnt;
+            computation = prev * crnt;
             break;
         case '÷':
             computation = prev / crnt;
